@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Share Your Location</title>
+</head>
+<body>
+  <h2>Click below to share your location with me</h2>
+  <button onclick="getLocation()">Share Location</button>
+
+  <form id="locationForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+    <input type="hidden" name="latitude" id="lat">
+    <input type="hidden" name="longitude" id="lon">
+  </form>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(sendLocation, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function sendLocation(position) {
+      document.getElementById("lat").value = position.coords.latitude;
+      document.getElementById("lon").value = position.coords.longitude;
+      document.getElementById("locationForm").submit();
+      alert("Your location has been sent!");
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("Permission denied.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("Request timed out.");
+          break;
+        default:
+          alert("Unknown error.");
+      }
+    }
+  </script>
+</body>
+</html>
